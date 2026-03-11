@@ -304,7 +304,7 @@ export function GatewayConfigDialog({
           </div>
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="mx-0 mb-0 px-5">
           <div className="flex w-full items-center justify-between gap-2">
             <Button
               variant="outline"
