@@ -1,6 +1,5 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { cookies, headers } from "next/headers"
-import { Geist, Geist_Mono } from "next/font/google"
 import { RootProviders } from "@/components/providers/root-providers"
 import {
   getLocaleDirection,
@@ -24,15 +23,6 @@ async function resolveRequestLocale() {
   return { locale, preference }
 }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await resolveRequestLocale()
@@ -61,7 +51,7 @@ export default async function RootLayout({
   return (
     <html lang={initialLocale} dir={initialDirection}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased"
       >
         <RootProviders
           initialLocale={initialLocale}
@@ -73,3 +63,6 @@ export default async function RootLayout({
     </html>
   )
 }
+
+
+

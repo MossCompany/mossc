@@ -1,3 +1,6 @@
+﻿packages:
+  - "."
+
 ignoredBuiltDependencies:
   - better-sqlite3
   - sharp

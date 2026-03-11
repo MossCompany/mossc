@@ -1,0 +1,25 @@
+﻿services:
+  mossc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CUSTOM_CA_CERT_BASE64: ${CUSTOM_CA_CERT_BASE64:-}
+        INSECURE_TLS: ${INSECURE_TLS:-0}
+    ports:
+      - "${MOSSC_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      OPENCLAW_STATE_DIR: /data/openclaw
+    volumes:
+      # Persist OpenClaw/MossC state & settings.
+      # Override with a host path like: OPENCLAW_STATE_DIR_HOST=D:/Users/you/.openclaw
+      - '${OPENCLAW_STATE_DIR_HOST:-mossc-openclaw}:/data/openclaw'
+    restart: unless-stopped
+
+volumes:
+  mossc-openclaw:
+
+
+
+
