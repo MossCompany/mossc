@@ -90,7 +90,7 @@ export function TopNav({ onVersionClick }: TopNavProps) {
           <ChevronDown className="h-3 w-3 text-muted-foreground" />
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="start" sideOffset={6}>
+        <DropdownMenuContent align="start" sideOffset={6} className="w-64">
           <DropdownMenuGroup>
             <DropdownMenuLabel>{t("topNav.selectEngine")}</DropdownMenuLabel>
             <DropdownMenuSeparator />
