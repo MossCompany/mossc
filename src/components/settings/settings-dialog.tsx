@@ -77,30 +77,6 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
     onOpenChange(o)
   }
 
-  const handleSelectSection = (id: SettingsSection) => {
-    setActiveSection(id)
-    setMobileShowContent(true)
-  }
-
-  const handleBack = () => {
-    setMobileShowContent(false)
-  }
-
-  const activeLabel = navItems.find((n) => n.id === activeSection)?.label
-
-  const sectionDescription = {
-    models: t("settings.descriptions.models"),
-    language: t("settings.descriptions.language"),
-    community: t("settings.descriptions.community"),
-  }[activeSection]
-
-  const handleOpenChange = (o: boolean) => {
-    if (!o) {
-      setMobileShowContent(false)
-    }
-    onOpenChange(o)
-  }
-
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent
