@@ -35,7 +35,10 @@
       "error": "连接错误"
     },
     "selectEngine": "选择引擎",
-    "comingSoon": "即将支持"
+    "comingSoon": "即将支持",
+    "gateway": {
+      "configure": "配置 Gateway..."
+    }
   },
   "settings": {
     "backToApp": "返回MossC",
@@ -62,6 +65,43 @@
       "en": "English"
     }
   },
+  "gatewayConfig": {
+    "title": "OpenClaw Gateway",
+    "description": "配置 MossC 连接 OpenClaw Gateway 的地址与 Token。",
+    "loading": "加载中...",
+    "loadFailed": "加载 Gateway 设置失败",
+
+    "urlLabel": "Gateway URL",
+    "urlPlaceholder": "ws://host.docker.internal:18789",
+    "urlHint": "请使用 ws:// 或 wss://。在 Windows/macOS 的 Docker Desktop 中，host.docker.internal 通常指向宿主机。",
+    "urlRequired": "请填写 Gateway URL",
+
+    "tokenLabel": "Gateway Token",
+    "tokenPlaceholder": "粘贴 Token...",
+    "tokenStoredHint": "已保存 Token，留空将继续使用已保存的 Token。",
+    "tokenRequiredHint": "当前未保存 Token，请输入 Token。",
+    "tokenRequired": "请填写 Gateway Token",
+    "tokenStoredState": "Token：{{state}}",
+
+    "test": "测试连接",
+    "testing": "测试中...",
+    "testSuccess": "连接测试通过",
+    "testFailed": "连接测试失败",
+
+    "saving": "保存中...",
+    "saveSuccess": "Gateway 设置已保存",
+    "saveFailed": "保存 Gateway 设置失败",
+
+    "domainApiModeDisabled": "Domain API 模式未开启；保存不会触发运行时重连。",
+    "lastCheckedAt": "上次测试：{{checkedAt}}",
+
+    "reconnect": {
+      "notAttempted": "未尝试重连（{{reason}}）",
+      "restarted": "已触发重连（之前状态：{{previousStatus}}）",
+      "failed": "重连失败：{{error}}"
+    }
+  },
+
   "conversationList": {
     "title": "消息",
     "pin": "置顶",

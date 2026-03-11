@@ -35,7 +35,10 @@
       "error": "Connection error"
     },
     "selectEngine": "Select engine",
-    "comingSoon": "Coming soon"
+    "comingSoon": "Coming soon",
+    "gateway": {
+      "configure": "Configure Gateway..."
+    }
   },
   "settings": {
     "backToApp": "Back to MossC",
@@ -62,6 +65,43 @@
       "en": "English"
     }
   },
+  "gatewayConfig": {
+    "title": "OpenClaw Gateway",
+    "description": "Configure the OpenClaw Gateway address and token used by MossC.",
+    "loading": "Loading...",
+    "loadFailed": "Failed to load gateway settings",
+
+    "urlLabel": "Gateway URL",
+    "urlPlaceholder": "ws://host.docker.internal:18789",
+    "urlHint": "Use ws:// or wss://. In Docker Desktop on Windows/macOS, host.docker.internal usually points to your host machine.",
+    "urlRequired": "Gateway URL is required.",
+
+    "tokenLabel": "Gateway Token",
+    "tokenPlaceholder": "Paste token...",
+    "tokenStoredHint": "A token is stored. Leave blank to keep it.",
+    "tokenRequiredHint": "No token stored. Please enter a token.",
+    "tokenRequired": "Gateway token is required.",
+    "tokenStoredState": "Token: {{state}}",
+
+    "test": "Test connection",
+    "testing": "Testing...",
+    "testSuccess": "Connection test passed",
+    "testFailed": "Connection test failed",
+
+    "saving": "Saving...",
+    "saveSuccess": "Gateway settings saved",
+    "saveFailed": "Failed to save gateway settings",
+
+    "domainApiModeDisabled": "Domain API mode is disabled; saving will not trigger a runtime reconnect.",
+    "lastCheckedAt": "Last checked: {{checkedAt}}",
+
+    "reconnect": {
+      "notAttempted": "Reconnect not attempted ({{reason}})",
+      "restarted": "Runtime reconnect triggered (previous status: {{previousStatus}})",
+      "failed": "Runtime reconnect failed: {{error}}"
+    }
+  },
+
   "conversationList": {
     "title": "Messages",
     "pin": "Pin",

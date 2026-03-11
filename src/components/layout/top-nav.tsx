@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Bug, Check, ChevronDown, Loader2, Wifi, WifiOff } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 import { useI18n } from "@/i18n"
 import { useApp } from "@/store/app-context"
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
+import { GatewayConfigDialog } from "./gateway-config-dialog"
 
 const connectionColors: Record<string, string> = {
   connected: "text-green-600",
@@ -35,6 +37,8 @@ export function TopNav({ onVersionClick }: TopNavProps) {
   const { state } = useApp()
   const { t } = useI18n()
   const { summary, loadSummary } = useConnectionSummary()
+  const [gatewayDialogOpen, setGatewayDialogOpen] = useState(false)
+
   const engineOptions = [
     { id: "openclaw", name: "OpenClaw", active: true },
     { id: "claude-code", name: "Claude Code", active: false },
@@ -42,6 +46,7 @@ export function TopNav({ onVersionClick }: TopNavProps) {
     { id: "nanobot", name: "Nanobot", active: false },
     { id: "more", name: t("messageInput.toolbar.more"), active: false },
   ] as const
+
   const connStatus = (state as { connectionStatus?: string }).connectionStatus ?? "disconnected"
   const connectionLabels: Record<string, string> = {
     connected: t("topNav.connection.connected"),
@@ -81,11 +86,10 @@ export function TopNav({ onVersionClick }: TopNavProps) {
             <WifiOff className="h-3.5 w-3.5" />
           )}
           <span>{connInfo.label}</span>
-          {versionLabel ? (
-            <span className="text-muted-foreground">{versionLabel}</span>
-          ) : null}
+          {versionLabel ? <span className="text-muted-foreground">{versionLabel}</span> : null}
           <ChevronDown className="h-3 w-3 text-muted-foreground" />
         </DropdownMenuTrigger>
+
         <DropdownMenuContent align="start" sideOffset={6}>
           <DropdownMenuGroup>
             <DropdownMenuLabel>{t("topNav.selectEngine")}</DropdownMenuLabel>
@@ -94,9 +98,7 @@ export function TopNav({ onVersionClick }: TopNavProps) {
               <DropdownMenuItem
                 key={engine.id}
                 disabled={!engine.active}
-                className={cn(
-                  !engine.active && "opacity-50 cursor-not-allowed"
-                )}
+                className={cn(!engine.active && "opacity-50 cursor-not-allowed")}
               >
                 <div className="flex items-center justify-between w-full gap-3">
                   <div className="flex items-center gap-2">
@@ -119,8 +121,19 @@ export function TopNav({ onVersionClick }: TopNavProps) {
               </DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
+
+          <DropdownMenuSeparator />
+
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Gateway</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => setGatewayDialogOpen(true)}>
+              {t("topNav.gateway.configure")}
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <GatewayConfigDialog open={gatewayDialogOpen} onOpenChange={setGatewayDialogOpen} />
 
       <div className="flex-1" />
 
@@ -141,10 +154,7 @@ export function TopNav({ onVersionClick }: TopNavProps) {
             href={BUG_FEEDBACK_URL}
             target="_blank"
             rel="noreferrer"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "sm" }),
-              "h-8 text-muted-foreground"
-            )}
+            className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "h-8 text-muted-foreground")}
           >
             <Bug className="h-4 w-4" />
             <span>{t("header.bugFeedback")}</span>
