@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowLeft, Brain, Check, Languages, ShieldCheck, Users } from "lucide-react"
+import { ArrowLeft, Brain, Check, Languages, ShieldCheck, Users, type LucideIcon } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -42,7 +42,7 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
 
   const isAdmin = currentUser?.role === "admin"
 
-  type NavItem = { id: SettingsSection; label: string; icon: typeof Brain | typeof Languages | typeof ShieldCheck }
+  type NavItem = { id: SettingsSection; label: string; icon: LucideIcon }
   const navItems: NavItem[] = [
     { id: "models", label: t("settings.sections.models"), icon: Brain },
     { id: "language", label: t("settings.sections.language"), icon: Languages },
@@ -77,29 +77,6 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
     onOpenChange(o)
   }
 
-  const handleSelectSection = (id: SettingsSection) => {
-    setActiveSection(id)
-    setMobileShowContent(true)
-  }
-
-  const handleBack = () => {
-    setMobileShowContent(false)
-  }
-
-  const activeLabel = navItems.find((n) => n.id === activeSection)?.label
-
-  const sectionDescription = {
-    models: t("settings.descriptions.models"),
-    language: t("settings.descriptions.language"),
-    community: t("settings.descriptions.community"),
-  }[activeSection]
-
-  const handleOpenChange = (o: boolean) => {
-    if (!o) {
-      setMobileShowContent(false)
-    }
-    onOpenChange(o)
-  }
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>

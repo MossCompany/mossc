@@ -6,8 +6,7 @@ const SESSION_COOKIE_NAME = "mossc_session";
 const encoder = new TextEncoder();
 
 const getSecret = (): string => {
-  const secret =
-    process.env.MOSSC_SECRET?.trim() || process.env.MOSSC_PASSWORD?.trim();
+  const secret = process.env.MOSSC_SECRET?.trim();
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
       throw new Error(

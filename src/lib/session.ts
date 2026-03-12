@@ -15,8 +15,7 @@ type SessionPayload = {
 const SESSION_EXPIRY_SECONDS = 60 * 60 * 24 * 30; // 30 days
 
 const getSecret = (): string => {
-  const secret =
-    process.env.MOSSC_SECRET?.trim() || process.env.MOSSC_PASSWORD?.trim();
+  const secret = process.env.MOSSC_SECRET?.trim();
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
       throw new Error(
